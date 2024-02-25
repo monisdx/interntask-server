@@ -15,16 +15,16 @@ export async function getdata(req, res) {
 
 export async function createdata(req, res) {
   const { name, email, phonenumber, hobbies } = req.body;
-
+  
+  try {
   const data = await DataMessage.find({$or:[{email},{phonenumber}]});
 
   if(data){
     return res.json({message: 'already exist entry'});
   }
 
-
   const newData = new DataMessage({ name, email, phonenumber, hobbies });
-  try {
+ 
     await newData.save();
 
     res.status(201).json(newData);
