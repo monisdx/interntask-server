@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 const dataSchema = mongoose.Schema({
     name: String,
-    phonenumber: String,
-    email: String,
+    phonenumber: {type:String, unique:true},
+    email: {type:String, unique:true},
     hobbies: [String],
 });
 
