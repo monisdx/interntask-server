@@ -16,10 +16,12 @@ export async function getdata(req, res) {
 export async function createdata(req, res) {
   const { name, email, phonenumber, hobbies } = req.body;
 
-  const data = DataMessage.find({$or:[{email},{phonenumber}]});
+  const data = await DataMessage.find({$or:[{email},{phonenumber}]});
 
-  if(data)
-  return res.status(201).json({message: error.message});
+  if(data){
+    return res.status(201).json({message: error.message});
+  }
+
 
   const newData = new DataMessage({ name, email, phonenumber, hobbies });
   try {
