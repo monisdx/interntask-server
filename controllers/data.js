@@ -19,7 +19,7 @@ export async function createdata(req, res) {
   try {
   const data = await DataMessage.find({$or:[{email},{phonenumber}]});
 
-  if(data !== undefined){
+  if(data.length>0){
     return res.json({message: 'already exist entry'});
   }
 
