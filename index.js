@@ -10,7 +10,7 @@ const app = express();
 
 app.use(bodyParser.json({limit: "30mb", extended: true}));      //properly send a request. This body-parser module parses the JSON, buffer, string and URL encoded data submitted using HTTP POST request.
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
-app.use(cors());
+app.use(cors({origin : "*"}));
 
 app.use('/data',dataRoutes);
 
